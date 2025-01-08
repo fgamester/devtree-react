@@ -8,7 +8,7 @@ Like I say in the api repository fo this same project, I was curious about learn
 
 **-React:** A JS library that facilitates front-end development.
 
-**-TailwindCSS:** Framework that improve web styling
+**-TailwindCSS:** Framework that speed up web styling process.
 
 ## You want to try it?
 
