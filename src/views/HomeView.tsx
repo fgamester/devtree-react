@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function HomeView() {
+export default function HomeView() {
     return (
         <>
             <h1>Home</h1>
