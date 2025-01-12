@@ -15,7 +15,7 @@ export default function DevtreeLogo({
             xmlnsXlink="http://www.w3.org/1999/xlink"
             id="svg34"
             viewBox="0 0 830.13 182.43"
-            width="1em"
+            width="4.56em"
             height="1em"
             aria-labelledby={titleId}
         >
