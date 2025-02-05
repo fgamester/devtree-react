@@ -1,29 +1,46 @@
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import ValidationError from "../components/ValidationError";
 
 export default function RegisterView() {
+  const { register, watch, handleSubmit, formState: { errors } } = useForm()
+
+  console.log(errors)
+
+  const handleRegister = () => {
+    console.log(errors)
+  }
+
   return (
     <>
       <div className=" flex flex-col justify-center items-center">
         <form
-          onSubmit={() => { }}
+          onSubmit={handleSubmit(handleRegister)}
           className="bg-white px-5 py-10 sm:rounded-xl space-y-5 sm:my-5 w-full sm:w-2/3 md:w-2/4 lg:w-2/5 xl:w-2/6"
         >
           <div className="grid grid-cols-1 space-y-3">
-            <label htmlFor="name" className="text-2xl text-slate-500">Nombre</label>
+            <label htmlFor="name" className="text-2xl text-slate-500">Name</label>
             <input
               id="name"
               type="text"
-              placeholder="Tu Nombre"
+              placeholder="John Doe"
               className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
+              {...register('name', {
+                required: 'The name is required'
+              })}
             />
+            {errors.name && <ValidationError message={String(errors.name?.message)} />}
           </div>
           <div className="grid grid-cols-1 space-y-3">
             <label htmlFor="email" className="text-2xl text-slate-500">E-mail</label>
             <input
               id="email"
               type="email"
-              placeholder="Email de Registro"
+              placeholder="email@email.com"
               className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
+              {...register('email', {
+                required: 'The email is required'
+              })}
             />
           </div>
           <div className="grid grid-cols-1 space-y-3">
@@ -31,8 +48,11 @@ export default function RegisterView() {
             <input
               id="handle"
               type="text"
-              placeholder="Nombre de usuario: sin espacios"
+              placeholder="johndoe"
               className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
+              {...register('handle', {
+                required: 'The handle is required'
+              })}
             />
           </div>
           <div className="grid grid-cols-1 space-y-3">
@@ -40,26 +60,31 @@ export default function RegisterView() {
             <input
               id="password"
               type="password"
-              placeholder="Password de Registro"
+              placeholder="********"
               className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
+              {...register('password', {
+                required: 'The password is required'
+              })}
             />
           </div>
 
           <div className="grid grid-cols-1 space-y-3">
-            <label htmlFor="password_confirmation" className="text-2xl text-slate-500">Repetir Password</label>
+            <label htmlFor="password_confirmation" className="text-2xl text-slate-500">Confirm Password</label>
             <input
               id="confirmPassword"
               type="password"
-              placeholder="Repetir Password"
+              placeholder="********"
               className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
             />
           </div>
 
-          <input
+          <button
             type="submit"
-            className="bg-cyan-400 p-3 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
+            className=" bg-devtree-2 p-3 text-lg w-full uppercase text-white rounded-lg font-bold cursor-pointer"
             value='Crear Cuenta'
-          />
+          >
+            Create Account
+          </button>
           <p className="!mt-2 text-center">
             You already registered?
             <Link className="underline underline-offset-2 hover:no-underline ps-2" to='/auth/login'>Log In</Link>
