@@ -12,6 +12,9 @@ export default {
       width: {
         'fit': 'fit-content'
       },
+      margin:{
+        'nb': '60px'
+      }
     },
   },
   plugins: [],

@@ -5,7 +5,9 @@ export default function MainLayout() {
     return (
         <>
             <NavBar />
-            <Outlet />
+            <div className="mt-nb">
+                <Outlet />
+            </div>
         </>
     )
 }
