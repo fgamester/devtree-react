@@ -42,6 +42,7 @@ export default function RegisterView() {
                 required: 'The email is required'
               })}
             />
+            {errors.email && <ValidationError message={String(errors.email?.message)} />}
           </div>
           <div className="grid grid-cols-1 space-y-3">
             <label htmlFor="handle" className="text-2xl text-slate-500">Handle</label>
@@ -54,6 +55,7 @@ export default function RegisterView() {
                 required: 'The handle is required'
               })}
             />
+            {errors.handle && <ValidationError message={String(errors.handle?.message)} />}
           </div>
           <div className="grid grid-cols-1 space-y-3">
             <label htmlFor="password" className="text-2xl text-slate-500">Password</label>
@@ -66,8 +68,8 @@ export default function RegisterView() {
                 required: 'The password is required'
               })}
             />
+            {errors.password && <ValidationError message={String(errors.password?.message)} />}
           </div>
-
           <div className="grid grid-cols-1 space-y-3">
             <label htmlFor="password_confirmation" className="text-2xl text-slate-500">Confirm Password</label>
             <input
