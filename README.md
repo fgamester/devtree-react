@@ -1,6 +1,7 @@
 # DevTree
 
 <div style="display:flex;gap:5px">
+    <p style="background-color:#28a745;color:white;width:fit-content;padding:2px 5px;border-radius:3px">Responsive</p>
     <p style="background-color:#3178C6;color:white;width:fit-content;padding:2px 5px;border-radius:3px">TypeScript</p>
     <p style="background-color:#61DAFB;color:black;width:fit-content;padding:2px 5px;border-radius:3px">React</p>
     <p style="background-color:#06B6D4;color:white;width:fit-content;padding:2px 5px;border-radius:3px">Tailwind</p>
