@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      minHeight:{
+        'remain': 'calc(100vh - 60px)'
+      },
       height: {
         'fit': 'fit-content'
       },
@@ -13,6 +16,9 @@ export default {
         'fit': 'fit-content'
       },
       margin: {
+        'nb': '60px'
+      },
+      padding:{
         'nb': '60px'
       },
       backgroundColor: {
