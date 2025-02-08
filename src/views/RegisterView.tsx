@@ -1,23 +1,26 @@
 import { Link } from "react-router-dom";
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+import type { RegisterForm } from '../types'
 import ValidationError from "../components/ValidationError";
 
 export default function RegisterView() {
-  const initialValues = {
+  const initialValues : RegisterForm = {
     name: '',
     email: '',
     handle: '',
     password: '',
     password_confirmation: '',
-  }
+  };
 
-  const { register, watch, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
+  const { register, watch, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: initialValues
+  });
 
-  console.log(errors)
+  const password = watch('password');
 
-  const handleRegister = () => {
-    console.log(errors)
-  }
+  const handleRegister = (formData : RegisterForm) => {
+    console.log(formData)
+  };
 
   return (
     <>
@@ -97,7 +100,8 @@ export default function RegisterView() {
             placeholder="********"
             className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
             {...register('password_confirmation', {
-              required: 'You need to repeat the password'
+              required: 'You need to repeat the password',
+              validate: (value) => value === password || "Passwords don't match"
             })}
           />
           {errors.password_confirmation && <ValidationError>{errors.password_confirmation.message}</ValidationError>}
