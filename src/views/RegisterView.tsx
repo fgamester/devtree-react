@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import type { RegisterForm } from '../types'
 import ValidationError from "../components/ValidationError";
 
+const apiUrl: string = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+
 export default function RegisterView() {
-  const initialValues : RegisterForm = {
+  const initialValues: RegisterForm = {
     name: '',
     email: '',
     handle: '',
@@ -18,8 +20,20 @@ export default function RegisterView() {
 
   const password = watch('password');
 
-  const handleRegister = (formData : RegisterForm) => {
+  const handleRegister = async (formData: RegisterForm) => {
     console.log(formData)
+    try {
+      const response = await fetch(`${apiUrl}/auth/register`, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log(response.json())
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
